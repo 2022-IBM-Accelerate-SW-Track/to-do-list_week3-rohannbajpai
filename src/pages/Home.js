@@ -3,6 +3,8 @@ import Todos from "../component/todos";
 import AddTodo from "../component/AddTodo";
 import "../pages/Home.css";
 
+//react-test-library
+
 class Home extends Component {
   // Create a default state of this component with an empty list of todos.
   constructor() {
@@ -11,7 +13,7 @@ class Home extends Component {
       todos: [],
     };
   }
-
+ 
   // the deleteTodo function simply creates a new array that removes the todo item selected from the user from the list
   // and then updates the state with the new list.
   deleteTodo = (id) => {
@@ -30,6 +32,12 @@ class Home extends Component {
   addTodo = (todo) => {
     const exists = this.state.todos.find(t => t.content === todo.content);
     if (exists){ return }
+    console.log(todo.due); 
+    if (todo.due === null || todo.due === "Invalid Date")  {
+      return; 
+    }
+
+    
     // In React, keys or ids in a list help identify which items have changed, been added or removed. Keys
     // should not share duplicate values.
     // To avoid having dup values, we use the Math.random() function to generate a random value for a todo id.

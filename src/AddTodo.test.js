@@ -21,6 +21,11 @@ afterEach(() => {
 
  test('test that App component doesn\'t render dupicate Task', () => {
   render(<App />);
+  const inputTask = screen.getByRole('textbox', {name: /Add New Item/i})
+  const inputDate = screen.getByPlaceholderText("mm/dd/yyyy");
+  fireEvent.change(inputTask, { target: { value: "History Test"}})
+  const element = screen.getByRole('button', {name: /Add/i});
+  
  });
 
  test('test that App component doesn\'t add a task without task name', () => {
